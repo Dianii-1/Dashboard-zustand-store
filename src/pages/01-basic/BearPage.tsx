@@ -14,6 +14,8 @@ export const BearPage = () => {
         <PolarBears />
 
         <PandaBears />
+
+        <BearsDisplay />
       </div>
     </>
   );
@@ -66,6 +68,15 @@ export const PolarBears = () => {
         <span className="text-3xl mx-2 lg:mx-10"> {polarBears} </span>
         <button onClick={() => increasePolarBears(-1)}>-1</button>
       </div>
+    </WhiteCard>
+  );
+};
+
+export const BearsDisplay = () => {
+  const bears = useBearStore((state) => state.bears);
+  return (
+    <WhiteCard>
+      <pre>{JSON.stringify(bears, null, 2)}</pre>
     </WhiteCard>
   );
 };
