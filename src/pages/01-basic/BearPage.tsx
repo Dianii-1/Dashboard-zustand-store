@@ -1,3 +1,4 @@
+import { useShallow } from "zustand/shallow";
 import { WhiteCard } from "../../components";
 import { useBearStore } from "../../stores";
 
@@ -73,7 +74,8 @@ export const PolarBears = () => {
 };
 
 export const BearsDisplay = () => {
-  const bears = useBearStore((state) => state.bears);
+  // El useShallow lo que hace es que valida si efectivamente el estado cambio para poderlo renderizr sino, no lo ejecuta
+  const bears = useBearStore(useShallow((state) => state.bears));
   return (
     <WhiteCard>
       <pre>{JSON.stringify(bears, null, 2)}</pre>
