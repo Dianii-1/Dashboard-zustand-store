@@ -76,9 +76,16 @@ export const PolarBears = () => {
 export const BearsDisplay = () => {
   // El useShallow lo que hace es que valida si efectivamente el estado cambio para poderlo renderizr sino, no lo ejecuta
   const bears = useBearStore(useShallow((state) => state.bears));
+  const addBear = useBearStore(useShallow((state) => state.addBear));
+  const clearBears = useBearStore(useShallow((state) => state.cleanBears));
+
   return (
     <WhiteCard>
-      <pre>{JSON.stringify(bears, null, 2)}</pre>
+      <div className="flex flex-col gap-4">
+        <button onClick={addBear}>Agregar oso</button>
+        <button onClick={clearBears}>Eliminar osos</button>
+        <pre>{JSON.stringify(bears, null, 2)}</pre>
+      </div>
     </WhiteCard>
   );
 };
